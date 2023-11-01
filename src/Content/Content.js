@@ -1,4 +1,6 @@
 import './Content.css';
+import Navbar from '../Navbar/Navbar';
+
 
 
 function Content() {
@@ -19,10 +21,13 @@ function Content() {
       </div>
 
     <div>
-      <div className='Kapcsolat'>
+      <div className='Kapcsolat' id='Kapcsolat'>
         <div className='KapcsolatWrapper'>
-          <h2>Kapcsolat:</h2>
-          
+          <h2 >Kapcsolat:</h2> <br></br>
+          <strong> Vegye fel velünk a kapcsolatot, ha kérdése vagy panasza van!</strong> <br></br>
+          <br></br> <b>Telefonon:</b>  <i>Telefonos Ügyfélszolgálatunkkal</i>  <br></br>  <b>Elektronikusan:</b> <i>E-mailben történő panasz és észrevétel bejelentéssel</i>
+          <br></br><br></br> <br></br> <br></br> <br></br> <br></br> E-mail: info@bank.com <br></br> <br></br> 
+         Ügyfélszolgálat: +36 33 450 337
         </div>
       </div>
     </div>
