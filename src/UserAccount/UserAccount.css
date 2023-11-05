@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+.UserAccountBody {
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+}
+
+#Name{
+    
+    color: black;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 50px;
+}
+
+/****************Navbar-start*****************/
 
 .UserAccountNavbar nav{
     position: fixed;
@@ -86,10 +100,8 @@
     
 }
 
-.UserAccountBody {
-    font-family: 'Open Sans', sans-serif;
-    min-height: 100vh;
-}
+/****************Navbar-end*****************/
+
 
 .container{
     display: grid;
@@ -97,6 +109,8 @@
     grid-template-rows: 200px 200px 200px 200px;
     align-items: center;
 }
+
+/****************Message-start*****************/
 
  .Messages
 {
@@ -128,7 +142,7 @@
     font-size: 25px;
 }
 
-
+/****************Message-end*****************/
 
 .Balance
 {   
@@ -186,13 +200,6 @@
     color: white;
 }
 
-#Name{
-    
-    color: black;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 50px;
-}
 
 .History
 {   
