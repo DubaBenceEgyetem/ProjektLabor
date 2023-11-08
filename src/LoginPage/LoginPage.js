@@ -10,6 +10,8 @@ function LoginPage()
     const [email, setEmail] = useState('');
     const [password, setJelszo] = useState('');
 
+
+    
     const handlePasswordChange = (value) => 
     {
         setJelszo(value);
@@ -19,14 +21,14 @@ function LoginPage()
     {
         setEmail(value);
     }
-
+  
 
     const onSubmit = (e) =>
     {
         e.preventDefault() 
         const data = {
             Email : email,
-            Jelszo : password
+            Jelszo : password,
                                 //ÁDÁM ELNEVEZÉSEI KELLENEK
         }
         const url = 'https://localhost:44310/api/Test/Login';
