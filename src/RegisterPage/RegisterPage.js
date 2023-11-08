@@ -79,7 +79,7 @@ function RegisterPage()
                 <input type='text' className='InputHolder' placeholder='Telefonszám' id='phone' onChange={(e) => handlePhoneChange(e.target.value)}></input><br></br>
                 <input type='password' className='InputHolder' placeholder='Jelszó' id='password' onChange={(e) => handlePasswordChange(e.target.value)}></input><br></br>
                 <button type='submit' onClick={() => handleSave()}>Regisztrálás</button><br></br>
-                <a href='/home'>Belépés</a>         
+                <a href='/'>Belépés</a>         
                 </div>
             </div>
         </Fragment>
