@@ -34,13 +34,15 @@ function LoginPage()
         const url = 'https://localhost:44310/api/Test/Login';
         axios.post(url,data).then((result) =>{
           
-                    if(result.data == 'User is valid')
-                    {
-                        navigate('/UserAccount')
-                    }
-                    else
-                    alert(result.data)
-                   
+                  
+                if(email.trim()  === "" || password.trim() === "")
+                alert("Fill the empty spaces")
+            else if(result.data == 'User is valid')
+                {
+                    navigate('/UserAccount')
+                }
+            else
+                alert(result.data)
             
         }
 
