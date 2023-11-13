@@ -40,6 +40,7 @@ function RegisterPage()
         setJelszo(value);
     }
 
+    
     const handleSave = () =>
     {
         const data = {
@@ -48,11 +49,20 @@ function RegisterPage()
             Email : email,
             Jelszo : password,
             PhoneNo : phone
-                                //ÁDÁM ELNEVEZÉSEI KELLENEK
+            //ÁDÁM ELNEVEZÉSEI KELLENEK
         }
         const url = 'https://localhost:44310/api/Test/Registration';
         axios.post(url,data).then((result) =>{
-            alert(result.data);
+            if(result.data == 'Fill all required fields.')
+            {
+              //  alert(result.data);
+                document.getElementById("ErrorLabel").innerHTML = "Töltse ki a hiányzó mezőket*"               
+            }
+            else
+            {
+               // alert(result.data);
+                document.getElementById("ErrorLabel").innerHTML = "Sikeres regisztráció";
+            }
         })
         .catch((error)=>
             {
@@ -78,6 +88,7 @@ function RegisterPage()
                 <input type='email' className='InputHolder' placeholder='Email cím' id='email' onChange={(e) => handleEmailChange(e.target.value)}></input><br></br>
                 <input type='text' className='InputHolder' placeholder='Telefonszám' id='phone' onChange={(e) => handlePhoneChange(e.target.value)}></input><br></br>
                 <input type='password' className='InputHolder' placeholder='Jelszó' id='password' onChange={(e) => handlePasswordChange(e.target.value)}></input><br></br>
+                <div id='ErrorLabel' className='ErrorLabel'></div>
                 <button type='submit' onClick={() => handleSave()}>Regisztrálás</button><br></br>
                 <a href='/'>Belépés</a>         
                 </div>

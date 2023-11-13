@@ -33,19 +33,20 @@ function LoginPage()
         }
         const url = 'https://localhost:44310/api/Test/Login';
         axios.post(url,data).then((result) =>{
-          
-                  
                 if(email.trim()  === "" || password.trim() === "")
-                alert("Fill the empty spaces")
-            else if(result.data == 'User is valid')
-                {
-                    navigate('/UserAccount')
-                }
-            else
-                alert(result.data)
-            
+                    {
+                        document.getElementById("ErrorLabel2").innerHTML = "Töltse ki a hiányzó mezőket*"
+                    }
+                else if(result.data == 'User is valid')
+                    {
+                        navigate('/UserAccount')
+                    }
+                else
+                    {
+                      //  alert(result.data)
+                        document.getElementById("ErrorLabel2").innerHTML = "Hibás email vagy jelszó*";
+                    }
         }
-
         )
         .catch((error)=>
             {
@@ -64,7 +65,8 @@ function LoginPage()
                     <h1>Belépés</h1><br></br>
                     <input type='email' className='InputHolder' placeholder='Email cím' id='email' onChange={(e) => handleEmailChange(e.target.value)}></input><br></br>
                     <input type='password' className='InputHolder' placeholder='Jelszó' id='password' onChange={(e) => handlePasswordChange(e.target.value)}></input><br></br>
-                <button type='submit'>Belépés</button><br></br>
+                    <div id='ErrorLabel2' className='ErrorLabel2'></div>
+                 <button type='submit'>Belépés</button><br></br>
                 <a href='/forgot' id='forgot'>Elfelejtetted a jelszavad?</a><br></br>
                 <a href='/register' id='register'>Regisztráció</a>     
                 </form>

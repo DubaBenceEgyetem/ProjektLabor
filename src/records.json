@@ -2,16 +2,16 @@
     {
         "id": 1,
         "title": "Bence",
-        "amount": "3000"
+        "amount": 3000
     },
     {
         "id": 2,
         "title": "Lilla",
-        "amount": "4000"
+        "amount": 4000
     },
     {
         "id": 3,
         "title": "cSABI",
-        "amount": "5000"
+        "amount": 5000
     }
 ]
