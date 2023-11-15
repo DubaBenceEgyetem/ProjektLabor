@@ -1,5 +1,7 @@
+
 .LoginPageWrapper
 {
+   
     position: relative;
     width: 400px;
     height: 500px;
@@ -18,9 +20,14 @@
     margin-top: 15px;
 }
 
+.error
+{
+    border: 2px solid rgb(120, 2, 2) !important;
+}
 
 .LoginPageInputHolder input
 {
+    font-size: 15px;
     width: 200px;
     border: none;
 }
@@ -49,7 +56,7 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
 
 }
