@@ -22,7 +22,9 @@ const SupportWindow = props =>{
         border: `2px solid #7a39e0`,
         overflow: 'hidden',
         boxShadow: '0px 0px 16px 6px rgba(0, 0, 0, 0.33)',
-        opacity: props.visible ? '1' : '0'}}>
+        opacity: props.visible ? '1' : '0',
+        zIndex: props.visible ? '1' : '-1'
+        }}>
         
             <EmailForm 
                 setUser = {user => setUser(user)}

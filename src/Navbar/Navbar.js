@@ -10,9 +10,9 @@ const Navbar = () =>
 
     return(
         <div className='Navbar'>
-            <a id='Főoldal'>Főoldal</a> 
-            <a id='Contact' href='#Kapcsolat'>Kapcsolat</a>
-            <a id='Ügyintézés' href='#Kapcsolat'>Ügyintézés</a>
+            <a key={'Főoldal'} id='Főoldal'>Főoldal</a> 
+            <a key={'Kapcsolat'} id='Contact' href='#Kapcsolat'>Kapcsolat</a>
+            <a  key={'Ügyintézés'} id='Ügyintézés' href='#Ügyintézés'>Ügyintézés</a>
         </div>
     );
 }

@@ -2,6 +2,8 @@ import React, { Fragment, useState } from 'react';
 import './LoginPage.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../Context/UserContext';
+
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -10,6 +12,7 @@ function LoginPage() {
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
    
+    const {userDispatch} = useUserContext();
     const handlePasswordChange = (value) => {
         setPassword(value);
         setPasswordError(false); 
@@ -37,8 +40,17 @@ function LoginPage() {
                     setEmailError(email.trim() === "");
                     setPasswordError(password.trim() === "");
 
-                } else if (result.data === 'User is valid') {
-                    console.log(data)
+                } else if (result.status === (200 || 304)) {
+                    userDispatch(
+                        {
+                            type: 'login',
+                            payload: 
+                            {
+                                user : result.data,
+                            }
+                        }
+                    )
+                    console.log(result)
                     navigate('/UserAccount')
                 } else {
                     document.getElementById("ErrorLabel2").innerHTML = "Hibás email vagy jelszó*";
