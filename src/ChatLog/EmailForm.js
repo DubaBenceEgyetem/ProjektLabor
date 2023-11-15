@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import{faSpinner} from '@fortawesome/free-solid-svg-icons';
-import Avatar from "./Avatar";
+
 import Image from './ECorp.png'
 import axios from "axios";
 
@@ -14,7 +14,6 @@ const EmailForm = props => {
 
 
     function getOrCreateUser(callback){
-        //require('dotenv').config();
         axios.put(
             "https://api.chatengine.io/users/",
             {
