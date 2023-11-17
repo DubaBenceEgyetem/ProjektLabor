@@ -5,8 +5,8 @@ import ChatEngine from './ChatEngine'
 
 const SupportWindow = props =>{
 
-    const [user, setUser] = useState(null)
-    const [chat, setChat] = useState(null)
+    const [user, setUser] = useState(null);
+    const [chat, setChat] = useState(null);
 
     return(
         <div className="transition-5" 
