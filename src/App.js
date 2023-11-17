@@ -26,7 +26,7 @@ function App() {
           <Routes>
               <Route path='' element={[<Navbar/>,<Content/>,<LoginPage/>,<Footer/>]} />
               <Route path='/register'  element={[<Navbar/>,<Content/>,<RegisterPage/>, <Footer/>]}/>
-              <Route path='/UserAccount' element={[<UserAccount/>, <SupportAdmin/>]}/>
+              <Route path='/UserAccount' element={[<UserAccount/>]}/>
           </Routes>
           </BrowserRouter>
       </AuthProvider> 

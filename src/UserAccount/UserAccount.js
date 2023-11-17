@@ -87,23 +87,23 @@ function UserAccount()
                                 <form>
                                         <div className='amount'>
                                             <p>Amount</p>
-                                            <input type='text' value={1}></input>
+                                            <input type='text'></input>
                                         </div>
                                         <div className='convert-box'>
                                             <div className='from'>
                                                 <p>From</p>
                                                 <div className='select-input'>
-                                                    <img src='https://flagcdn.com/48x36/us.png'></img>
-                                                    <select placeholder='select'></select>
+                                                    {/* <img src='https://flagcdn.com/48x36/us.png'></img> */}
+                                                    <select placeholder='click to choose'></select>
                                                 </div>
                                             </div>
                                             <div className='reverse'><FontAwesomeIcon icon={faArrowRightArrowLeft}  /></div>
-                                            <div className='to'>
+                                            <  div className='to'>
                                                 <p>to</p>
-                                                <div className='select-input'>
-                                                    <img src='https://flagcdn.com/48x36/gb.png'></img>
-                                                    <select placeholder='select'></select>
-                                                </div>
+                                                    <div className='select-input'>
+                                                        {/* <img src='https://flagcdn.com/48x36/gb.png'></img> */}
+                                                        <select></select>
+                                                    </div>
                                             </div>
                                             <div className='result'>Getting exchange rate...</div>
                                             <button>Get Exchange Rate</button>
