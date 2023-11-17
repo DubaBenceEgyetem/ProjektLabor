@@ -10,8 +10,7 @@ import Content from './Content/Content.js';
 import UserAccount from './UserAccount/UserAccount.js';
 import './App.css';
 import Card from './Card/Card.js';
-
-
+import { AuthProvider } from './Context/UserContext.js';
 
 
 
@@ -21,16 +20,17 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-      <BrowserRouter>
-         <Routes>
-             <Route path='' element={[<Navbar/>,<Content/>,<LoginPage/>,<Footer/>]} />
-             <Route path='/register'  element={[<Navbar/>,<Content/>,<RegisterPage/>, <Footer/>]}/>
-             <Route path='/UserAccount' element={<UserAccount/>}/>
-         </Routes>
-        </BrowserRouter>
-        
-      </div> 
+
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+              <Route path='' element={[<Navbar/>,<Content/>,<LoginPage/>,<Footer/>]} />
+              <Route path='/register'  element={[<Navbar/>,<Content/>,<RegisterPage/>, <Footer/>]}/>
+              <Route path='/UserAccount' element={[<UserAccount/>, <SupportAdmin/>]}/>
+          </Routes>
+          </BrowserRouter>
+      </AuthProvider> 
+
     </div>
   
   );

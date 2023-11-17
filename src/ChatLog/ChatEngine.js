@@ -1,7 +1,5 @@
 import React from "react";
-import {ChatEngineWrapper, ChatFeed, Socket} from 'react-chat-engine'; 
-
-
+import {ChatEngineWrapper as CE, ChatFeed, Socket} from 'react-chat-engine'
 
 const ChatEngine = props => {
     return (
@@ -13,20 +11,20 @@ const ChatEngine = props => {
             zIndex: props.visible ? '100' : '0'
             }}
         >
-          { 
+           { 
           props.visible &&
-          <ChatEngineWrapper>
-            <Socket
+          <CE>
+             <Socket 
                 projectID = {process.env.REACT_APP_CE_PROJEKT_ID}
                 userName = {props.user.email}
                 userSecret = {props.user.email}
-            />
-               
+             />
             <ChatFeed activeChat = {props.chat.id}/>
 
-          </ChatEngineWrapper>
-            } 
-        </div>
+           </CE>
+            }  
+
+        </div>      
 
     )
 }

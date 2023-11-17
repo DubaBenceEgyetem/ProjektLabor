@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope,faVault, faHelmetSafety, faComment,
     faCreditCard, faRightFromBracket, faLandmark, faChartLine, 
     faRightLeft, 
-    faSatelliteDish, faWallet, faPiggyBank, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
+    faSatelliteDish, faWallet, faPiggyBank, faScaleBalanced,faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Card from '../Card/Card.js';
 import axios from 'axios';
 
@@ -81,29 +81,34 @@ function UserAccount()
                         <div className='Balance'>
                                 <p>Az egyenleged  <FontAwesomeIcon icon={faWallet} className='walleticon'/></p>
                                     <div className='amount' id='amount'>4000</div> 
-                        </div>  
-                        <div className='main'>
-                            <h1> Currency Converter</h1>
-                                <div className='ApiWrapper' id='ApiWrapper'>
-                                    <div className='control'>
-                                        <button id='base'>USD</button>
-                                        <input type='number' id='base-input' min='0'></input>
-                                    </div>
-                                    <div className='control'>
-                                        <button id='target'>EUR</button>
-                                        <input type='number' id='target-input' readOnly></input>
-                                    </div>
-                                        <button className='swap-btn'><FontAwesomeIcon icon={faRightLeft} /></button>
-                                </div>
-                                <div className='exchange-rate'>
-                                    <h5>Exchange Rate</h5>
-                                    <span id='exchange-rate'></span>
-                                </div>
-                                <div className='drawer' id='drawer'>
-                                    <div className='title'>
-
-                                    </div>
-                                </div>
+                        </div> 
+                        <div className='ApiWrapper'>
+                                <h2>Currency Converter</h2>
+                                <form>
+                                        <div className='amount'>
+                                            <p>Amount</p>
+                                            <input type='text' value={1}></input>
+                                        </div>
+                                        <div className='convert-box'>
+                                            <div className='from'>
+                                                <p>From</p>
+                                                <div className='select-input'>
+                                                    <img src='https://flagcdn.com/48x36/us.png'></img>
+                                                    <select placeholder='select'></select>
+                                                </div>
+                                            </div>
+                                            <div className='reverse'><FontAwesomeIcon icon={faArrowRightArrowLeft}  /></div>
+                                            <div className='to'>
+                                                <p>to</p>
+                                                <div className='select-input'>
+                                                    <img src='https://flagcdn.com/48x36/gb.png'></img>
+                                                    <select placeholder='select'></select>
+                                                </div>
+                                            </div>
+                                            <div className='result'>Getting exchange rate...</div>
+                                            <button>Get Exchange Rate</button>
+                                        </div>
+                                </form>
                         </div>
                     </div>
                  </div>
