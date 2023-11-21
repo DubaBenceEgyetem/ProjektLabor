@@ -40,7 +40,7 @@ function LoginPage() {
                     setEmailError(email.trim() === "");
                     setPasswordError(password.trim() === "");
 
-                } else if (result.status === (200 || 304)) {
+                } else if (result.status === (200 ||304)) { // fixelni kell
                     userDispatch(
                         {
                             type: 'login',

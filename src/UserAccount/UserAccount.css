@@ -222,13 +222,11 @@
 .ApiWrapper
 {
     
-     z-index: 0;
     border-radius: 15px;
     display: grid;
     width: 100%;
     color: white;
     padding: 20px 30px;
-    box-shadow: 0 4px 30px rgba(185, 0, 255, 0.1);
     grid-column-start: 4; 
     grid-column-end: 4;
     grid-row-start: 3;
@@ -254,6 +252,12 @@
     margin-bottom: 7px;
 }
 
+.amount input
+{
+    outline: none;
+    text-decoration: none;
+}
+
 .container form input
 {
     height: 40px;
@@ -269,12 +273,13 @@
 
 .container form input:hover
 {
-    border: 3px solid purple;
+    border: 3px solid rgb(58, 1, 65);
+   
 }
 
 .container form input:focus{
     padding: 0 14px;
-    border: 3px solid purple;
+    border: 3px solid rgb(58, 1, 65);
 }
 
 .container form .convert-box
@@ -299,7 +304,6 @@
     align-items: center;
     border-radius: 5px;
     padding: 0 20px;
-    color: red;
     background: transparent;
     cursor: pointer;
     appearance: none; 
@@ -310,7 +314,7 @@
 
 
 .container .convert-box .select-input select:hover {
-    border: 3px solid purple;
+    border: 3px solid rgb(58, 1, 65);
     outline: none;
 }
 
@@ -329,6 +333,8 @@
     margin-top: 32px;
     font-size: 22px;
     transform: rotate(90deg);
+    transition: all 0.3s ease;
+
 }
 
 .container .convert-box .reverse:hover
@@ -337,6 +343,15 @@
     color: black;
     
 }
+
+
+.container .convert-box .reverse:focus
+{
+    cursor: pointer;
+    color: black;
+    
+}
+
 .container form .result
 {
     font-size: 1.1rem;

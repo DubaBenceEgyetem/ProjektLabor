@@ -11,6 +11,7 @@ import UserAccount from './UserAccount/UserAccount.js';
 import './App.css';
 import Card from './Card/Card.js';
 import { AuthProvider } from './Context/UserContext.js';
+import Chat from './ChatLog/Chat.js'
 
 
 
@@ -26,7 +27,7 @@ function App() {
           <Routes>
               <Route path='' element={[<Navbar/>,<Content/>,<LoginPage/>,<Footer/>]} />
               <Route path='/register'  element={[<Navbar/>,<Content/>,<RegisterPage/>, <Footer/>]}/>
-              <Route path='/UserAccount' element={[<UserAccount/>]}/>
+              <Route path='/UserAccount' element={[<UserAccount/>, <Chat/>]}/>
           </Routes>
           </BrowserRouter>
       </AuthProvider> 
