@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import './UserAccount.css';
 import Records from '../records.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +10,7 @@ import Card from '../Card/Card.js';
 import axios from 'axios';
 import { ControlOutlined } from '@ant-design/icons';
 import {Country_List} from './countries.js';
+import { useUserContext } from '../Context/UserContext';
 
 
 
@@ -51,8 +52,10 @@ const onSubmit = (e) =>
 function UserAccount  ()
 {
 
-   
-    
+
+   const {user} = useUserContext();
+
+
     // useEffect(() => {
     //     // Replace 'YOUR_API_KEY' with your actual API key
     //     const apiKey = 'cur_live_N7sgjwUVC2B57M0a1uaX2UePOXORwtYZHp0xLn9y';
@@ -84,11 +87,14 @@ function UserAccount  ()
     //     });
     // }, []);
     
-    
+
+
+
     return(
          
+    
               <div className='UserAccountBody'>
-                <h4 id='Name'>Üdvözöljük, <label id='AccountUserName'>Hello, 👋</label></h4>   
+                <h4 id='Name'><label id='AccountUserName'>Hello,👋</label></h4>   
                  <div className='UserAccountNavbar'>
                 <nav> 
                     <ul>

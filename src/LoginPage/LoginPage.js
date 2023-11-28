@@ -47,10 +47,12 @@ function LoginPage() {
                             payload: 
                             {
                                 user : result.data,
+                    
                             }
                         }
                     )
-                    console.log(result)
+                    
+                    console.log(result.data)
                     navigate('/UserAccount')
                 } else {
                     document.getElementById("ErrorLabel2").innerHTML = "Hibás email vagy jelszó*";

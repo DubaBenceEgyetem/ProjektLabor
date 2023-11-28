@@ -22,7 +22,7 @@ export function useUserContext()
 }
 export const AuthProvider = ({children}) =>
     {
-            const [user, userDispatch] = useReducer(userReducer, {});
+            const [user, userDispatch] = useReducer(userReducer, null);
                 return(
                     <UserContext.Provider           
                     value= {{

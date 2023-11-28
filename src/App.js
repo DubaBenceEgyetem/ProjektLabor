@@ -21,16 +21,18 @@ function App() {
 
   return (
     <div className="App">
-
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-              <Route path='' element={[<Navbar/>,<Content/>,<LoginPage/>,<Footer/>]} />
-              <Route path='/register'  element={[<Navbar/>,<Content/>,<RegisterPage/>, <Footer/>]}/>
-              <Route path='/UserAccount' element={[<UserAccount/>, <Chat/>]}/>
-          </Routes>
-          </BrowserRouter>
-      </AuthProvider> 
+<React.StrictMode> 
+  <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+                <Route path='' element={[<Navbar/>,<Content/>,<LoginPage/>,<Footer/>]} />
+                <Route path='/register'  element={[<Navbar/>,<Content/>,<RegisterPage/>, <Footer/>]}/>
+                <Route path='/UserAccount' element={[<UserAccount/>, <Chat/>]}/>
+            </Routes>
+            </BrowserRouter>
+        </AuthProvider> 
+  </React.StrictMode>
+     
 
     </div>
   
