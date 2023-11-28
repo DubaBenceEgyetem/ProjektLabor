@@ -10,6 +10,7 @@ import Card from '../Card/Card.js';
 import axios from 'axios';
 import { ControlOutlined } from '@ant-design/icons';
 import {Country_List} from './countries.js';
+import UserChat from "../ChatLog/UserChat.js"
 import { useUserContext } from '../Context/UserContext';
 
 
@@ -94,6 +95,8 @@ function UserAccount  ()
          
     
               <div className='UserAccountBody'>
+              
+                <h4 id='Name'>Üdvözöljük, <label id='AccountUserName'>Hello, 👋</label></h4>   
                 <h4 id='Name'><label id='AccountUserName'>Hello,👋</label></h4>   
                  <div className='UserAccountNavbar'>
                 <nav> 
@@ -107,7 +110,7 @@ function UserAccount  ()
                         <li><a href="#Kártyáim"><FontAwesomeIcon icon={faCreditCard} className='icon'/><span className='navitem'>Kártáim</span></a></li><br></br><br></br>
                         <li><a><FontAwesomeIcon icon={faRightFromBracket}  className='logout' id='logout'/><span className='navitem'>Kilépés</span></a></li>
                     </ul>
-                </nav>
+                </nav> 
             
                     <div className='container'>
                         <div className='Messages'>
@@ -144,6 +147,7 @@ function UserAccount  ()
                                             <button>Váltás</button>
                                         </div>
                                 </form>
+                                
                         </div>
                     </div>
                  </div>

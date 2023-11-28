@@ -71,7 +71,7 @@ function LoginPage() {
         <Fragment>
             <div className='LoginPageWrapper' id='LoginForm'>
                 <form className='LoginPageInputHolder' onSubmit={onSubmit}>
-                    <h1>Belépés</h1><br></br>
+                    <h1>Belépés a fiókba</h1><br></br>
                     <input
                         type='email'
                         className={`InputHolder ${emailError ? 'error' : ''}`}

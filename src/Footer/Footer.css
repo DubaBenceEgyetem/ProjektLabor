@@ -20,26 +20,34 @@ footer{
    
 }
 
-.menu li
+.menu h4 li
 {
     list-style: none;
     display: inline-block;
     padding: 10px;
     margin: 20px;
-}
-
- .menu li a 
- {
+    cursor: pointer;
     color: white;
-    text-decoration: none;
-    font-size: 20px;
-    margin: 0 10px;
 }
 
-.menu li a:hover
-{  
-  opacity: 0.7;
+.menu h4 li:hover{
+    animation: pulse 1.5s;
 }
+
+@keyframes pulse {
+    0% {
+      transform: scale(.85);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+    }
+      100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+    }
+  }
+
 
 footer .wave
 {
