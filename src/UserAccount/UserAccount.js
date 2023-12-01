@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import './UserAccount.css';
 import Records from '../records.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,24 +9,8 @@ import { faEnvelope,faVault, faHelmetSafety, faComment,
 import axios from 'axios';
 import {Country_List} from './countries.js';
 import UserChat from "../ChatLog/UserChat.js"
-import {useUserContext} from "../Context/UserContext.js";
-
-
-
-
-
-const {title, amount} = Records; //json fájllal kommunikálás
-
-const fromCur = document.querySelector(".from select");
-const toCur = document.querySelector(".to select");
-const getBtn = document.querySelector("form button");
-const exIcon = document.querySelector("form .reverse");
-const Examount = document.querySelector("form input");
-const exRateTxt = document.querySelector("form .result");
-
-
-// event listeners
-
+import { useUserContext } from '../Context/UserContext';
+import CurrencyRow from './CurrencyRow.js'
 
 
 const onSubmit = (e) => 
@@ -34,55 +18,81 @@ const onSubmit = (e) =>
     e.preventDefault();
     console.log("Működik");
     
-}
+} 
+const BASE_URL = 'http://api.exchangeratesapi.io/latest?access_key=62000324b6ec71a2c8380cc9f598a5a4'
+
 
 function UserAccount  ()
 {
 
+    const [currencyOptions, setCurrencyOptions] = useState([])
+    const [fromCurrency, setFromCurrency] = useState() 
+    const [toCurrency, setToCurrency] = useState() 
+    const [exchangeRate, setExchangeRate] = useState()
+    const [amount, setAmount] = useState(1)
+    const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+    
    
+    let toAmount, fromAmount
+    if (amountInFromCurrency) {
+        fromAmount = amount
+        toAmount = amount * exchangeRate
+    } 
+    else {
+        toAmount = amount
+        fromAmount = amount / exchangeRate
+    }
+
+// const {user} = useUserContext();
     
-    // useEffect(() => {
+     useEffect(() => {
     //     // Replace 'YOUR_API_KEY' with your actual API key
-    //     const apiKey = 'cur_live_N7sgjwUVC2B57M0a1uaX2UePOXORwtYZHp0xLn9y';
-    //     const apiUrl = `https://api.currencyapi.com/v3/latest?apikey=${apiKey}`;
-    
+        // const apiKey = 'cur_live_N7sgjwUVC2B57M0a1uaX2UePOXORwtYZHp0xLn9y';
+        // const apiUrl = `https://api.currencyapi.com/v3/latest?apikey=${apiKey}`;
+   
     //     // Make a GET request to the API
-    //     fetch(apiUrl)
-    //     .then((response) => {
-    //         if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //         }
-    //         return response.json();
-    //     })
-    //     .then((currency)  => {
-    //         var amountDiv = document.getElementById('amount');
-    //         var amountInHUF = parseFloat(amountDiv.textContent);
-    //         //console.log(amountInHUF)
-            
+         
+        
+         fetch(BASE_URL)
+         .then(res => res.json())
+         .then(data  => {
+            const firstCurrency = Object.keys(data.rates)[0];
+           setCurrencyOptions([data.base, ...Object.keys(data.rates)])
+           setFromCurrency(data.base)
+           setToCurrency(firstCurrency)
+           setExchangeRate(data.rates[firstCurrency])
+   
+         })
+    }, [])
 
-    //          var USD = Math.round(amountInHUF * currency.data["USD"].value);
-    //         var EUR = Math.round(amountInHUF * currency.data["EUR"].value);
-    //         console.log(currency.data)
-    //         document.getElementById('EUR').innerHTML = EUR.toFixed(2); 
-    //        document.getElementById('USD').innerHTML = USD.toFixed(2); ;
+    useEffect(() => {
+        if (fromCurrency != null && toCurrency != null) {
+          fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
+            .then(res => res.json())
+            .then(data => setExchangeRate(data.rates[toCurrency]))
+        }
+      }, [fromCurrency, toCurrency])
+    
+    function handleFromAmountChange(e){
+        setAmount(e.target.value)
+        setAmountInFromCurrency(true)
+    }
 
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error fetching data:', error);
-    //     });
-    // }, []);
+    function handleToAmountChange(e){
+        setAmount(e.target.value)
+        setAmountInFromCurrency(false)
+    }
     
-    const {user} = useUserContext();
-    console.log(user);
-    
+
 
     return(
-
-
-
+     
+       
+    
               <div className='UserAccountBody'>
               
-                <h4 id='Name'><label id='AccountUserName'>Hello, {user.Vezetek_nev}👋</label></h4>   
+                <h4 id='Name'>Üdvözöljük, <label id='AccountUserName'>Hello, 👋</label></h4>   
+                <h4 id='Name'><label id='AccountUserName'>Hello,👋</label></h4>   
                  <div className='UserAccountNavbar'>
                 <nav> 
                     <ul>
@@ -105,9 +115,9 @@ function UserAccount  ()
                                 <p>Az egyenleged  <FontAwesomeIcon icon={faWallet} className='walleticon'/></p>
                                     <div className='amount' id='amount'>4000</div> 
                         </div> 
-                        <form className='ApiWrapper' onSubmit={onSubmit}>
+                        <form className='ApiWrapper' onSubmit={onSubmit} >
                                 <h2>Valuta árfolyam váltó</h2>
-                                
+                                <div>
                                         <div className='amount'>
                                             <p>Összeg</p>
                                             <input type='text'></input>
@@ -115,41 +125,38 @@ function UserAccount  ()
                                         <div className='convert-box'>
                                             <div className='from'>
                                                 <p>Erről</p>
-                                                <div className='select-input'>
-                                                    <img src='https://flagcdn.com/48x36/us.png'></img>
-                                                    <select></select>
-                                                </div>
+                                                <CurrencyRow
+                                                currencyOptions={currencyOptions}
+                                                selectedCurrency={fromCurrency}
+                                                onChangeCurrency={e => setFromCurrency(e.target.value)}
+                                                onChangeAmount={handleFromAmountChange}
+                                                amount={fromAmount}
+                                                />
                                             </div>
                                             <div className='reverse'><FontAwesomeIcon icon={faArrowRightArrowLeft}  /></div>
                                             <  div className='to'>
                                                 <p>Erre</p>
-                                                    <div className='select-input'>
-                                                        <img src='https://flagcdn.com/48x36/gb.png'></img>
-                                                        <select></select>
-                                                    </div>
+                                                    <CurrencyRow
+                                                    currencyOptions={currencyOptions}
+                                                    selectedCurrency={toCurrency}
+                                                    onChangeCurrency={e => setToCurrency(e.target.value)}
+                                                    onChangeAmount={handleToAmountChange}
+                                                    amount={toAmount}
+                                                    />
                                             </div>
                                             <div className='result'>Váltás...</div>
                                             <button>Váltás</button>
-                                        </div> 
+                                        </div>
+                                </div>
+                                
                         </form>
                     </div>
                  </div>
-            </div>
-             
-    
+              </div>
     )
-    // [fromCur, toCur].forEach((select, i) => {
-    //     for (let curCode in Country_List) {
-    //         const selected = (i === 0 && curCode === "USD") || (i === 1 && curCode === "GBP") ? "selected" : "";
-    //         select.insertAdjacentHTML("beforeend", `<option value="${curCode}" ${selected}>${curCode}</option>`);
-    //     }
-    //     select.addEventListener("change", (event) => {
-    //         const code = select.value;
-    //         const imgTag = select.parentElement.querySelector("img");
-    //         imgTag.src = `https://flagcdn.com/48x36/${Country_List[code].toLowerCase()}.png`;
-    //     })
-    // })
     
+    
+  
 }
 
 export default UserAccount;

@@ -59,10 +59,12 @@ function LoginPage() {
                             type: 'login',
                             payload: 
                             {
+
                                 user : result.data.UserData,
                             }
                         }
                     )
+                    
                     console.log(result.data)
                     navigate('/UserAccount')
                 } else {
