@@ -68,22 +68,24 @@ export default function UserChat()
   console.log("Before useEffect");
    const [channel, setChannel] = useState(null)
    const [client, setClient] = useState(null)
-  useEffect(() => {
-
+ 
+   useEffect(() => {
+   
+ 
     async function init() {
       console.log("After useEffect");
       const chatClient = StreamChat.getInstance(apiKey);
 
       await chatClient.connectUser(user, chatClient.devToken(user.id));
 
-      const newChannel = chatClient.channel("messaging", "chat", {
+      const channel = chatClient.channel("messaging", "chat", {
         image: "https://www.drupal.org/files/project-images/react.png",
         name: "Segíthetek?",
         members: [user.id],
       });
 
-      await newChannel.watch()
-      setChannel(newChannel)
+      await channel.watch()
+      setChannel(channel)
       setClient(chatClient)
     }
    
