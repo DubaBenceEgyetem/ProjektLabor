@@ -6,12 +6,10 @@ import { faEnvelope,faVault, faHelmetSafety, faComment,
     faCreditCard, faRightFromBracket, faLandmark, faChartLine, 
     faRightLeft, 
     faSatelliteDish, faWallet, faPiggyBank, faScaleBalanced,faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import Card from '../Card/Card.js';
 import axios from 'axios';
-import { ControlOutlined } from '@ant-design/icons';
 import {Country_List} from './countries.js';
 import UserChat from "../ChatLog/UserChat.js"
-
+import {useUserContext} from "../Context/UserContext.js";
 
 
 
@@ -26,17 +24,6 @@ const exIcon = document.querySelector("form .reverse");
 const Examount = document.querySelector("form input");
 const exRateTxt = document.querySelector("form .result");
 
-// [fromCur, toCur].forEach((select, i) => {
-//     for (let curCode in Country_List) {
-//         const selected = (i === 0 && curCode === "USD") || (i === 1 && curCode === "GBP") ? "selected" : "";
-//         select.insertAdjacentHTML("beforeend", `<option value="${curCode}" ${selected}>${curCode}</option>`);
-//     }
-//     select.addEventListener("change", (event) => {
-//         const code = select.value;
-//         const imgTag = select.parentElement.querySelector("img");
-//         imgTag.src = `https://flagcdn.com/48x36/${Country_List[code].toLowerCase()}.png`;
-//     })
-// })
 
 // event listeners
 
@@ -85,12 +72,17 @@ function UserAccount  ()
     //     });
     // }, []);
     
+    const {user} = useUserContext();
+    console.log(user);
     
+
     return(
-         
+
+
+
               <div className='UserAccountBody'>
               
-                <h4 id='Name'>Üdvözöljük, <label id='AccountUserName'>Hello, 👋</label></h4>   
+                <h4 id='Name'><label id='AccountUserName'>Hello, {user.Vezetek_nev}👋</label></h4>   
                  <div className='UserAccountNavbar'>
                 <nav> 
                     <ul>
@@ -113,9 +105,9 @@ function UserAccount  ()
                                 <p>Az egyenleged  <FontAwesomeIcon icon={faWallet} className='walleticon'/></p>
                                     <div className='amount' id='amount'>4000</div> 
                         </div> 
-                        <div className='ApiWrapper' onSubmit={onSubmit}>
+                        <form className='ApiWrapper' onSubmit={onSubmit}>
                                 <h2>Valuta árfolyam váltó</h2>
-                                <form>
+                                
                                         <div className='amount'>
                                             <p>Összeg</p>
                                             <input type='text'></input>
@@ -125,7 +117,7 @@ function UserAccount  ()
                                                 <p>Erről</p>
                                                 <div className='select-input'>
                                                     <img src='https://flagcdn.com/48x36/us.png'></img>
-                                                    <select value=''></select>
+                                                    <select></select>
                                                 </div>
                                             </div>
                                             <div className='reverse'><FontAwesomeIcon icon={faArrowRightArrowLeft}  /></div>
@@ -133,20 +125,31 @@ function UserAccount  ()
                                                 <p>Erre</p>
                                                     <div className='select-input'>
                                                         <img src='https://flagcdn.com/48x36/gb.png'></img>
-                                                        <select value=''></select>
+                                                        <select></select>
                                                     </div>
                                             </div>
-                                            <div className='result'>Getting exchange rate...</div>
+                                            <div className='result'>Váltás...</div>
                                             <button>Váltás</button>
-                                        </div>
-                                </form>
-                                
-                        </div>
+                                        </div> 
+                        </form>
                     </div>
                  </div>
-              </div>
-        
-    );
+            </div>
+             
+    
+    )
+    // [fromCur, toCur].forEach((select, i) => {
+    //     for (let curCode in Country_List) {
+    //         const selected = (i === 0 && curCode === "USD") || (i === 1 && curCode === "GBP") ? "selected" : "";
+    //         select.insertAdjacentHTML("beforeend", `<option value="${curCode}" ${selected}>${curCode}</option>`);
+    //     }
+    //     select.addEventListener("change", (event) => {
+    //         const code = select.value;
+    //         const imgTag = select.parentElement.querySelector("img");
+    //         imgTag.src = `https://flagcdn.com/48x36/${Country_List[code].toLowerCase()}.png`;
+    //     })
+    // })
+    
 }
 
 export default UserAccount;

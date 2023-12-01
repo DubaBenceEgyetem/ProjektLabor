@@ -1,115 +1,38 @@
-import React, {useState, useEffect} from "react";
-import { StreamChat } from "stream-chat";
-import {
-  Chat,
-  ChannelList,
-  Channel,
-  Window,
-  MessageList,
-  MessageInput,
-  Thread,
-  LoadingIndicator,
-  ChannelHeader,
-  useChatContext,
-  useChannelStateContext,
-} from "stream-chat-react";
-
-const apiKey = process.env.REACT_APP_STREAM_API_KEY;
-
-const user = {
-  id: "igen",
-  name: "admin",
-  image: "https://getstream.imgix.net/images/random_svg/FS.png",
-};
-
-const filters = { type: "messaging", members: { $in: [user.id] } };
-const sort = { last_message_at: -1 };
-
-const Users = () => {
-  const { client } = useChatContext();
-  const { channel } = useChannelStateContext();
-  const [channelUsers, setChannelUsers] = useState([]);
-
-  useEffect(() => {
-    const updateChannelUsers = (event) => {
-      if (!event || channel.state.members[event.user.id] !== undefined) {
-        setChannelUsers(
-          Object.values(channel.state.members).map((user) => ({
-            name: user.user_id,
-            online: user.user.online,
-          }))
-        );
-      }
-    };
-
-    updateChannelUsers();
-
-    client.on("user.presence.changed", updateChannelUsers)
-
-    return () => {
-      client.off("user.presence.changed", updateChannelUsers)
-    };
-  }, [client, channel])
-
-  return (
-    <ul className="users-list">
-      {channelUsers.map((member) => (
-        <li key={member.name}>
-          {member.name} - {member.online ? "online" : "offline"}
-        </li>
-      ))}
-    </ul>
-  );
-}
+import { Channel, ChannelHeader, ChannelList, Chat, LoadingIndicator, MessageInput, MessageList, Window, ChannelListMessenger, useChatContext  } from "stream-chat-react";
+import { useUserContext } from "../Context/UserContext";
+import "stream-chat-react/dist/css/index.css"
 
 
-export default function UserChat() 
-{
-  console.log("Before useEffect");
-   const [channel, setChannel] = useState(null)
-   const [client, setClient] = useState(null)
- 
-   useEffect(() => {
+
+export function UserChat () {
+  const {user, streamChat} = useUserContext()
+
+  if (streamChat == null) return <LoadingIndicator/>
+
+  return(
    
- 
-    async function init() {
-      console.log("After useEffect");
-      const chatClient = StreamChat.getInstance(apiKey);
-
-      await chatClient.connectUser(user, chatClient.devToken(user.id));
-
-      const channel = chatClient.channel("messaging", "chat", {
-        image: "https://www.drupal.org/files/project-images/react.png",
-        name: "Segíthetek?",
-        members: [user.id],
-      });
-
-      await channel.watch()
-      setChannel(channel)
-      setClient(chatClient)
-    }
-   
-  init()
-
-    if (client) return () => client.disconnectUser()
-  }, []);
-
-  if (!channel || !client) return <LoadingIndicator />;
-
-  return (
-    <Chat client={client} theme="messaging dark">
-      <ChannelList 
-      filters={filters} 
-      sort={sort} />
+  <Chat client = {streamChat}>
+      <ChannelList List={Channels} sendChannelsToList 
+      //filters={{members: {$in: [user.id]}}}
+      />
       <Channel>
         <Window>
-          <Users />
-          <ChannelHeader />
-          <MessageList />
-          <MessageInput />
+        <ChannelHeader/>
+        <MessageList/>
+        <MessageInput/>
         </Window>
-        <Thread />
       </Channel>
-    </Chat>
-  );
-};
+  </Chat>
+  )
+}
+
+function Channels({loadedChannels} = ChannelListMessenger) {
+  const {setActiveChannel, channel: activeChannel} = useChatContext()
+  
+  return (
+    <div className="w-60 flex flex-col gap-4 m-3 h-full">
+     
+
+    </div>
+  )
+}

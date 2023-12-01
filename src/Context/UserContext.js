@@ -5,7 +5,7 @@ const userReducer = (state, action) => {
 
   switch (action.type) {
     case "login":
-      return {user};
+      return user;
     case "logout":
       return null;
       default:
@@ -22,7 +22,7 @@ export function useUserContext()
 }
 export const AuthProvider = ({children}) =>
     {
-            const [user, userDispatch] = useReducer(userReducer, {});
+            const [user, userDispatch] = useReducer(userReducer, null);
                 return(
                     <UserContext.Provider           
                     value= {{

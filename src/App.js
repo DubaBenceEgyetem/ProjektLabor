@@ -9,9 +9,10 @@ import Footer from './Footer/Footer.js';
 import Content from './Content/Content.js';
 import UserAccount from './UserAccount/UserAccount.js';
 import './App.css';
-import UserChat  from './ChatLog/UserChat.js';
+import { UserChat } from './ChatLog/UserChat.js';
 import { AuthProvider } from './Context/UserContext.js';
 import Avatar from './ChatLog/Avatar.js';
+import ProtectedRoute from './Auth/ProtectedRoute.js';
 
 
 
@@ -29,9 +30,8 @@ function App() {
           <Routes>
               <Route path='' element={[<Navbar/>,<LoginPage/>,<Content/>,<Footer/>]} />
               <Route path='/register'  element={[<Navbar/>,<RegisterPage/>,<Content/>, <Footer/>]}/>
-              <Route path='/UserAccount' element={[<UserAccount/>]}/>
-              <Route path='/Chat' element={[<UserChat/>]}/>
-              
+              <Route path='/UserAccount' element={<ProtectedRoute><UserAccount/></ProtectedRoute>}/>
+              <Route path='/Chat' element={<UserChat/>}/>     
           </Routes>
           </BrowserRouter>
       </AuthProvider>  
