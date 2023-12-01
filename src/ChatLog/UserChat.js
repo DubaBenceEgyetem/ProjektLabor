@@ -69,8 +69,7 @@ export default function UserChat()
    const [channel, setChannel] = useState(null)
    const [client, setClient] = useState(null)
   useEffect(() => {
-   
- 
+
     async function init() {
       console.log("After useEffect");
       const chatClient = StreamChat.getInstance(apiKey);
@@ -91,7 +90,7 @@ export default function UserChat()
   init()
 
     if (client) return () => client.disconnectUser()
-  }, []);
+  }, [client]);
 
   if (!channel || !client) return <LoadingIndicator />;
 
