@@ -29,7 +29,7 @@
 
 .LoginPageInputHolder input
 {
-    font-size: 18px;
+    font-size: 15px;
     width: 200px;
     border: none;
 }
@@ -42,7 +42,7 @@
     text-decoration: none;
     width: 200px;
     margin-top: 50px;
-    font-size: 15px;
+    font-size: 18px;
     transition: all 0.3s ease;
 }
 

@@ -9,9 +9,9 @@ import Footer from './Footer/Footer.js';
 import Content from './Content/Content.js';
 import UserAccount from './UserAccount/UserAccount.js';
 import './App.css';
-import UserChat  from './ChatLog/UserChat.js';
+import ProtectedRoute from './Auth/ProtectedRoute.js'
 import { AuthProvider } from './Context/UserContext.js';
-
+import CurrencyConverter from './Currency_Converter/CurrencyConverter.js';
 
 
 
@@ -27,10 +27,9 @@ function App() {
   <AuthProvider>
           <BrowserRouter>
             <Routes>
-                <Route path='' element={[<Navbar/>,<Content/>,<LoginPage/>,<Footer/>]} />
-                <Route path='/register'  element={[<Navbar/>,<Content/>,<RegisterPage/>, <Footer/>]}/>
-                <Route path='/UserAccount' element={[<UserAccount/>, ]}/>
-                <Route path='/Chat' element = {<UserChat/>} />
+                <Route path='' element={[<Navbar/>,<LoginPage/>,<Content/>,<Footer/>]} />
+                <Route path='/register'  element={[<Navbar/>,<RegisterPage/>,<Content/>,<Footer/>]}/>
+                <Route path='/UserAccount' element={[<UserAccount/> ]}/>
             </Routes>
             </BrowserRouter>
         </AuthProvider> 

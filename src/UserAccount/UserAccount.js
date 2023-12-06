@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext} from 'react';
 import './UserAccount.css';
-import Records from '../records.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope,faVault, faHelmetSafety, faComment,
     faCreditCard, faRightFromBracket, faLandmark, faChartLine, 
     faRightLeft, 
     faSatelliteDish, faWallet, faPiggyBank, faScaleBalanced,faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import Card from '../Card/Card.js';
 import axios from 'axios';
 import { ControlOutlined } from '@ant-design/icons';
 import { useUserContext } from '../Context/UserContext';
@@ -59,8 +57,7 @@ function UserAccount  ()
     
               <div className='UserAccountBody'>
               
-                <h4 id='Name'>Üdvözöljük, <label id='AccountUserName'>Hello, 👋</label></h4>   
-                <h4 id='Name'><label id='AccountUserName'>Hello,👋</label></h4>   
+                <h4 id='Name'>Üdvözöljük, <label id='AccountUserName'>Hello,👋</label></h4>   
                  <div className='UserAccountNavbar'>
                 <nav> 
                     <ul>
@@ -111,6 +108,8 @@ function UserAccount  ()
                         </form>
                     </div>
                  </div>
+
+                 <CurrencyConverter/>
               </div>
     )
     
