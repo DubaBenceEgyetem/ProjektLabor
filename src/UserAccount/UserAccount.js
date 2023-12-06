@@ -9,82 +9,48 @@ import { faEnvelope,faVault, faHelmetSafety, faComment,
 import Card from '../Card/Card.js';
 import axios from 'axios';
 import { ControlOutlined } from '@ant-design/icons';
-import {Country_List} from './countries.js';
-import UserChat from "../ChatLog/UserChat.js"
 import { useUserContext } from '../Context/UserContext';
-import CurrencyRow from './CurrencyRow.js'
 
 
-const onSubmit = (e) => 
-{
-    e.preventDefault();
-    console.log("Működik");
-    
-} 
-const BASE_URL = 'http://api.exchangeratesapi.io/latest?access_key=62000324b6ec71a2c8380cc9f598a5a4'
 
 
 function UserAccount  ()
 {
+    useEffect(() => {
+    const select = document.querySelectorAll('select');
+    const input = document.querySelectorAll('input');
+    const API_URL = 'http://api.exchangeratesapi.io/latest?access_key=62000324b6ec71a2c8380cc9f598a5a4'
+    let html = '';
 
-    const [currencyOptions, setCurrencyOptions] = useState([])
-    const [fromCurrency, setFromCurrency] = useState() 
-    const [toCurrency, setToCurrency] = useState() 
-    const [exchangeRate, setExchangeRate] = useState()
-    const [amount, setAmount] = useState(1)
-    const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
-    
-   
-    let toAmount, fromAmount
-    if (amountInFromCurrency) {
-        fromAmount = amount
-        toAmount = amount * exchangeRate
-    } 
-    else {
-        toAmount = amount
-        fromAmount = amount / exchangeRate
-    }
+    async function currency() {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        const arrKeys = Object.keys(data.rates);
+        const rates = data.rates;
+        console.log(rates)
+        arrKeys.map(item => {
+            return html += `<option value=${item}>${item}</option>`;
+        });
+        for(let i = 0; i<select.length; i++){
+            select[i].innerHTML = html;
+        };
+       
+        function convert(i,j){
+            input[i].value = input[j].value * rates[select[i].value] / rates[select[j].value];
+        }
 
-// const {user} = useUserContext();
-    
-     useEffect(() => {
-    //     // Replace 'YOUR_API_KEY' with your actual API key
-        // const apiKey = 'cur_live_N7sgjwUVC2B57M0a1uaX2UePOXORwtYZHp0xLn9y';
-        // const apiUrl = `https://api.currencyapi.com/v3/latest?apikey=${apiKey}`;
-   
-    //     // Make a GET request to the API
-         
-        
-         fetch(BASE_URL)
-         .then(res => res.json())
-         .then(data  => {
-            const firstCurrency = Object.keys(data.rates)[0];
-           setCurrencyOptions([data.base, ...Object.keys(data.rates)])
-           setFromCurrency(data.base)
-           setToCurrency(firstCurrency)
-           setExchangeRate(data.rates[firstCurrency])
-   
-         })
+        input[0].addEventListener('keyup', () => convert(1,0))
+
+        input[1].addEventListener('keyup', () => convert(0,1))
+
+        select[0].addEventListener('change', () => convert(1,0))
+
+        select[1].addEventListener('change', () => convert(0,1))
+    };
+
+    currency();
     }, [])
 
-    useEffect(() => {
-        if (fromCurrency != null && toCurrency != null) {
-          fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
-            .then(res => res.json())
-            .then(data => setExchangeRate(data.rates[toCurrency]))
-        }
-      }, [fromCurrency, toCurrency])
-    
-    function handleFromAmountChange(e){
-        setAmount(e.target.value)
-        setAmountInFromCurrency(true)
-    }
-
-    function handleToAmountChange(e){
-        setAmount(e.target.value)
-        setAmountInFromCurrency(false)
-    }
-    
 
 
     return(
@@ -104,7 +70,7 @@ function UserAccount  ()
                         <li><a><FontAwesomeIcon icon={faPiggyBank} className='icon'/><span className='navitem'>Számlabefizetés</span></a></li>
                         <li><a><FontAwesomeIcon icon={faLandmark} className='icon'/><span className='navitem'>Számlatörténet</span></a></li>
                         <li><a><FontAwesomeIcon icon={faVault} className='icon'/><span className='navitem'>Zseb</span></a></li>
-                        <li><a href="#Kártyáim"><FontAwesomeIcon icon={faCreditCard} className='icon'/><span className='navitem'>Kártáim</span></a></li><br></br><br></br>
+                        <li><a href="#Kártyáim"><FontAwesomeIcon icon={faCreditCard} className='icon'/><span className='navitem'>Kártyáim</span></a></li><br></br><br></br>
                         <li><a><FontAwesomeIcon icon={faRightFromBracket}  className='logout' id='logout'/><span className='navitem'>Kilépés</span></a></li>
                     </ul>
                 </nav> 
@@ -117,37 +83,28 @@ function UserAccount  ()
                                 <p>Az egyenleged  <FontAwesomeIcon icon={faWallet} className='walleticon'/></p>
                                     <div className='amount' id='amount'>4000</div> 
                         </div> 
-                        <form className='ApiWrapper' onSubmit={onSubmit} >
+                        <form className='ApiWrapper' >
                                 <h2>Valuta árfolyam váltó</h2>
                                 <div>
-                                        <div className='amount'>
-                                            <p>Összeg</p>
-                                            <input type='text'></input>
-                                        </div>
+                                        
                                         <div className='convert-box'>
                                             <div className='from'>
                                                 <p>Erről</p>
-                                                <CurrencyRow
-                                                currencyOptions={currencyOptions}
-                                                selectedCurrency={fromCurrency}
-                                                onChangeCurrency={e => setFromCurrency(e.target.value)}
-                                                onChangeAmount={handleFromAmountChange}
-                                                amount={fromAmount}
-                                                />
+                                                <input type='number'/>
+                                                <select>
+                                                   
+                                                </select>
                                             </div>
                                             <div className='reverse'><FontAwesomeIcon icon={faArrowRightArrowLeft}  /></div>
-                                            <  div className='to'>
+                                            < div className='to'>
                                                 <p>Erre</p>
-                                                    <CurrencyRow
-                                                    currencyOptions={currencyOptions}
-                                                    selectedCurrency={toCurrency}
-                                                    onChangeCurrency={e => setToCurrency(e.target.value)}
-                                                    onChangeAmount={handleToAmountChange}
-                                                    amount={toAmount}
-                                                    />
+                                                <input type='number'/>
+                                                <select>
+                                                    
+                                                </select>
                                             </div>
-                                            <div className='result'>Getting exchange rate...</div>
-                                            <button>Váltás</button>
+                                            
+                                            
                                         </div>
                                 </div>
                                 
@@ -156,7 +113,6 @@ function UserAccount  ()
                  </div>
               </div>
     )
-    
     
   
 }
