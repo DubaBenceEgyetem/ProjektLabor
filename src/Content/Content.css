@@ -1,36 +1,99 @@
-.AllWrapper
+.Connections
 {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    margin-top: 150px;
+    padding: 20px;
+}
+
+.ConnectionsWrapper
+{
+    background-color: #e8c5fc;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 15px;
+    width: 75%;
+}
+
+.Locations
+{
+    margin-top: 50px;
+    background-color: azure;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows:  200px 200px 200px 200px;
+    grid-template-columns: repeat(4, 3fr);
+    grid-template-rows:  repeat(3, 250px);
+    gap: 3%;
+}
+
+.LocationsWrapper
+{
+    background: linear-gradient(#efbbff, #91b8e5);
+    grid-column-end: 2;
+    grid-column-start: 2;
+    grid-row-end: 2;
+    grid-row-start: 2;
+    border-radius: 15px;
+    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
     
 }
-
-
-.Kapcsolat
+.Label
 {
-    display: grid;
-    font-size: 20px;
-    width: 100%;
-    height: 100%;
-    margin: 150px 0px 100px 150px;
-    font-family: serif;
-    color: rgb(0, 0, 0);
-    grid-column-start: 3; 
-    grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: 5;
+    margin: 15px;
+    font-size: 30px;
+
 }
-
-.KapcsolatWrapper
+.LocationsInput
 {
+    background: transparent;
+    outline: none;
+    border: 2px solid rgb(63, 63, 63);
+    height: 25px;
     padding: 15px;
-    background: linear-gradient(#efbbff, #91b8e5);
-    border-radius: 20px;
-    width: 100%;
-    height: 400px;
+    margin-top: 50px;
+    border-radius: 15px;
+    width: 160px;
+    color: black;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
     text-align: center;
+    margin-left: 15px ;
+  
+}
+
+.icon
+{
+    padding: 25px;
+    font-size: 60px;
+    float:right;
 }
 
 
+.CurrenciesWrapper
+{
+    background: linear-gradient(#efbbff, #91b8e5);
+    grid-column-end: 3;
+    grid-column-start: 3;
+    grid-row-end: 2;
+    grid-row-start: 2;
+    border-radius: 15px;
+    height: 100%;
+   float: right;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 
