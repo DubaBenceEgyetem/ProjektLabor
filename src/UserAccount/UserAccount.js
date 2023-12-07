@@ -6,7 +6,6 @@ import { faEnvelope,faVault, faHelmetSafety, faComment,
     faRightLeft, 
     faSatelliteDish, faWallet, faPiggyBank, faScaleBalanced,faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import { ControlOutlined } from '@ant-design/icons';
 import { useUserContext } from '../Context/UserContext';
 
 
@@ -17,15 +16,17 @@ function UserAccount  ()
     useEffect(() => {
     const select = document.querySelectorAll('select');
     const input = document.querySelectorAll('input');
-    const API_URL = 'http://api.exchangeratesapi.io/latest?access_key=62000324b6ec71a2c8380cc9f598a5a4'
+    const API_URL = 'http://data.fixer.io/api/latest?access_key=57adabccbe4b2e4098b48a272fe2d2d5&fbclid=IwAR0CT9DSagnp9_ZKqcfxpwmBIcs7OmxZwreql3P6DQ80-lO1-VYua2_hnVs'
     let html = '';
 
     async function currency() {
         const res = await fetch(API_URL);
         const data = await res.json();
         const arrKeys = Object.keys(data.rates);
+        console.log(arrKeys.sort())
+        
         const rates = data.rates;
-        console.log(rates)
+       // console.log(rates)
         arrKeys.map(item => {
             return html += `<option value=${item}>${item}</option>`;
         });
@@ -109,7 +110,7 @@ function UserAccount  ()
                     </div>
                  </div>
 
-                 <CurrencyConverter/>
+                
               </div>
     )
     

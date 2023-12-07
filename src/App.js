@@ -11,7 +11,6 @@ import UserAccount from './UserAccount/UserAccount.js';
 import './App.css';
 import ProtectedRoute from './Auth/ProtectedRoute.js'
 import { AuthProvider } from './Context/UserContext.js';
-import CurrencyConverter from './Currency_Converter/CurrencyConverter.js';
 
 
 
