@@ -3,6 +3,7 @@ import './RegisterPage.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom'
 
 
 
@@ -78,7 +79,7 @@ function RegisterPage()
                 }
             else
             {
-                toast.error('Sikeres regisztráció', {
+                toast.success('Sikeres regisztráció', {
                     position: 'bottom-center',
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -125,7 +126,7 @@ function RegisterPage()
                 <input type='password' className='InputHolder' placeholder='Jelszó' id='password' onChange={(e) => handlePasswordChange(e.target.value)}></input><br></br>
                 <div id='ErrorLabel' className='ErrorLabel'></div>
                 <button type='submit' onClick={() => handleSave()}>Regisztrálás</button><br></br>
-                <a href='/'>Belépés</a>         
+                <Link to='/'>Belépés</Link>         
                 </div>
             </div>
         </Fragment>

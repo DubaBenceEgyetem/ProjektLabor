@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../Context/UserContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom'
 
 
 function LoginPage() {
@@ -36,7 +37,7 @@ function LoginPage() {
         const url = 'https://localhost:44310/api/Test/Login';
         axios.post(url, data)
             .then((result) => {
-                if (email.trim() === "" || password.trim() === "") {  //üresek a mezők
+                if (email.trim() === "" || password.trim() === "") { 
                     toast.error('Töltse ki a hiányzó mezőket', {
                         position: 'bottom-center',
                         autoClose: 5000,
@@ -53,7 +54,7 @@ function LoginPage() {
                     setEmailError(email.trim() === "");
                     setPasswordError(password.trim() === "");
 
-                } else if (result.status == 200) { // fixelni kell
+                } else if (result.status == 200) { 
                     userDispatch(
                         {
                             type: 'login',
@@ -118,8 +119,8 @@ function LoginPage() {
                         onChange={(e) => handlePasswordChange(e.target.value)}
                     ></input><br></br>
                     <button type='submit'>Belépés</button><br></br>
-                    <a href='/forgot' id='forgot'>Elfelejtetted a jelszavad?</a>
-                    <a href='/register' id='register'>Regisztráció</a>
+                    <Link to='/forgot' id='forgot'>Elfelejtetted a jelszavad?</Link>
+                    <Link to='/register' id='register'>Regisztráció</Link>
                 </form>
             </div>
         </Fragment>

@@ -7,13 +7,16 @@ const ProtectedRoute = ({children}) =>
 {
     const user = useUserContext();
     const navigate = useNavigate();
-
+    console.log(!user)
     useEffect(() => {
 
-        if(!user) navigate("/");
+        if(!user)  navigate("/");
+
     }, []);
 
+
     return children;
+
 }
 
 export default ProtectedRoute

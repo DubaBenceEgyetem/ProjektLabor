@@ -52,15 +52,6 @@ function Content()
     };
 
     currency();
-
-    // Refresh the data every 10 seconds
-    // const intervalId = setInterval(() => {
-    //   currency();
-    //   console.log("Változik")
-    // }, 10000);
-
-    // // Clear the interval on component unmount
-    // return () => clearInterval(intervalId);
   }, []);
 
   return (

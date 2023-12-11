@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import './Navbar.css';
 import Content from '../Content/Content';
+import {Link} from 'react-router-dom'
 
 
 const Navbar = () =>
@@ -10,10 +11,10 @@ const Navbar = () =>
 
     return(
         <div className='Navbar'>
-              <a key={'Rólunk'} id='Us' href='#Rólunk'>Rólunk</a>
-            <a key={'Kapcsolat'} id='Contact' href='#Kapcsolat'>Kapcsolat</a>
-            <a  key={'Ügyintézés'} id='Ügyintézés' href='#Ügyintézés'>Ügyintézés</a>
-            <a  key={'Hitelek'} id='Hitelek' href='#Hitelek'>Hitelek</a>
+            <Link key={'Rólunk'} id='Us' to='#Rólunk'>Rólunk</Link>
+            <Link key={'Kapcsolat'} id='Contact' to='#Kapcsolat'>Kapcsolat</Link>
+            <Link  key={'Ügyintézés'} id='Ügyintézés' to='#Ügyintézés'>Ügyintézés</Link>
+            <Link  key={'Hitelek'} id='Hitelek' to='#Hitelek'>Hitelek</Link>
         </div>
     );
 }
