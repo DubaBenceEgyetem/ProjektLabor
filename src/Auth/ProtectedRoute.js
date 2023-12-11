@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({children}) =>
 {
-    const {user} = useUserContext();
+    const user = useUserContext();
     const navigate = useNavigate();
 
     useEffect(() => {

@@ -53,7 +53,7 @@ function LoginPage() {
                     setEmailError(email.trim() === "");
                     setPasswordError(password.trim() === "");
 
-                } else if (result.status === (200 || 304)) { // fixelni kell
+                } else if (result.status == (200 || 304)) { // fixelni kell
                     userDispatch(
                         {
                             type: 'login',
@@ -107,7 +107,7 @@ function LoginPage() {
                     <input
                         value={email}
                         type='email'
-                        className={`InputHolder ${!!emailError ? 'error' : ''}`}
+                        className='InputHolder'
                         placeholder='Email cím'
                         id='email'
                         onChange={(e) => handleEmailChange(e.target.value)}
@@ -115,7 +115,7 @@ function LoginPage() {
                     <input  
                         value={password}
                         type='password'
-                        className={`InputHolder ${!!passwordError ? 'error' : ''}`}
+                        className='InputHolder'
                         placeholder='Jelszó'
                         id='password'
                         onChange={(e) => handlePasswordChange(e.target.value)}

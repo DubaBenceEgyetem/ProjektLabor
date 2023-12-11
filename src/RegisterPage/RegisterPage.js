@@ -8,7 +8,7 @@ function RegisterPage()
 {
     const [name1, setKereszt] = useState('');
     const [name2, setVezet] = useState('');
-  //  const [check, setSzamla] = useState('');
+    const [check, setSzamla] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setTelefon] = useState('');
     const [password, setJelszo] = useState('');
@@ -40,6 +40,11 @@ function RegisterPage()
         setJelszo(value);
     }
 
+    const handleCheckChange = (value) => 
+    {
+        setSzamla(value);
+    }
+
     
     const handleSave = () =>
     {
@@ -48,7 +53,8 @@ function RegisterPage()
             Vezetek_nev : name2,
             Email : email,
             Jelszo : password,
-            PhoneNo : phone
+            PhoneNo : phone,
+            számla : check
             //ÁDÁM ELNEVEZÉSEI KELLENEK
         }
         const url = 'https://localhost:44310/api/Test/Registration';
@@ -80,13 +86,9 @@ function RegisterPage()
                     <h1>Regisztráció</h1><br></br>
                     <input type='text' placeholder='Keresztnév' id='kereszt' onChange={(e) => handleName1Change(e.target.value)}></input>
                     <input type='text' placeholder='Vezetéknév' id='vezet' onChange={(e) => handleName2Change(e.target.value)}></input>
-          
-          
-            {/* <input type='text' className='InputHolder' placeholder='Számlaszám'></input>*/}       
-          
-          
                 <input type='email' className='InputHolder' placeholder='Email cím' id='email' onChange={(e) => handleEmailChange(e.target.value)}></input><br></br>
                 <input type='text' className='InputHolder' placeholder='Telefonszám' id='phone' onChange={(e) => handlePhoneChange(e.target.value)}></input><br></br>
+                <input type='text' className='InputHolder' placeholder='Számlaszám' id='check' onChange={(e) => handleCheckChange(e.target.value)}></input><br></br>
                 <input type='password' className='InputHolder' placeholder='Jelszó' id='password' onChange={(e) => handlePasswordChange(e.target.value)}></input><br></br>
                 <div id='ErrorLabel' className='ErrorLabel'></div>
                 <button type='submit' onClick={() => handleSave()}>Regisztrálás</button><br></br>

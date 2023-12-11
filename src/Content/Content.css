@@ -1,38 +1,35 @@
+
+
 .Connections
 {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    text-align: center;
-    margin-top: 150px;
-    padding: 20px;
+   margin-top: 50px;
+   font-size: 25px;
 }
 
 .ConnectionsWrapper
 {
-    background-color: #e8c5fc;
-    border-radius: 15px;
-    padding: 20px;
-    font-size: 15px;
-    width: 75%;
+  
+  padding: 15px;
+  background: linear-gradient(90deg, #e0bbff, white, #efbbff);
+   width: 100%;
+  
 }
+
 
 .Locations
 {
     margin-top: 50px;
-    background-color: azure;
+    background: linear-gradient(90deg, #e0bbff, white, #efbbff);
     display: grid;
     grid-template-columns: repeat(4, 3fr);
     grid-template-rows:  repeat(3, 250px);
     gap: 3%;
+    
 }
 
 .LocationsWrapper
 {
+ 
     background: linear-gradient(#efbbff, #91b8e5);
     grid-column-end: 2;
     grid-column-start: 2;
@@ -60,7 +57,7 @@
     border: 2px solid rgb(63, 63, 63);
     height: 25px;
     padding: 15px;
-    margin-top: 50px;
+    margin-top: 50px;   
     border-radius: 15px;
     width: 160px;
     color: black;
@@ -92,3 +89,176 @@
     rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
+.Values
+{
+    margin: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    
+
+}
+
+.LocationsWrapper button{
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #ffffffef;
+    text-decoration: none;
+    width: 100px;
+    font-size: 18px;
+    transition: all 0.3s ease;   
+    display: block; 
+    margin: 0 auto;
+    margin-top: 20px;
+    
+}
+
+
+.Us{
+
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #ffffffef;
+    text-decoration: none;
+    width: 400px;
+    padding: 10px;
+    font-size: 25px;
+    transition: all 0.3s ease;   
+   
+}
+
+.Us:hover{
+    background: #290235;
+    color: white;
+    animation: pulse 1.5s;
+}
+
+.LocationsWrapper button:hover
+{
+    background: #290235;
+    color: white;
+    animation: pulse 1.5s;
+    
+  
+  }
+  
+  .WhyUs
+  {
+    margin-top: 100px;
+    background: linear-gradient(90deg, #e0bbff, white, #efbbff);
+    display: grid;
+    grid-template-columns: repeat(5, 300px);
+    grid-template-rows:  repeat(4, 150px);
+    gap: 20px;
+    
+  }
+.Why
+{
+  justify-content: center;
+  text-align: center;
+  margin: 15px;
+  font-size: 25px;
+  grid-column-end:3;
+  grid-column-start: 1;
+  grid-row-end: 5;
+  grid-row-start: 1;
+}
+.HandShake{
+  margin-top: 45px;
+  font-size: 150px;
+  color: purple;
+}
+
+  .First
+  {
+   
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(#efbbff, #91b8e5);
+    border-radius: 25px;
+    grid-column-end: 3;
+    grid-column-start: 3;
+    grid-row-end: 2;
+    grid-row-start: 3;
+  }
+  .Second
+  {
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(#efbbff, #91b8e5);
+    border-radius: 25px;
+    grid-column-end: 4;
+    grid-column-start: 4;
+    grid-row-end: 2;
+    grid-row-start: 3;
+   
+  }
+
+  .Third
+  {
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(#efbbff, #91b8e5);
+    border-radius: 25px;
+    grid-column-end: 5;
+    grid-column-start: 5;
+    grid-row-end: 2;
+    grid-row-start: 3;
+  }
+
+  .Fourth
+  {
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(#efbbff, #91b8e5);
+    border-radius: 25px;
+    grid-column-end: 4;
+    grid-column-start: 3;
+    grid-row-end: 3;
+    grid-row-start: 3;
+  }
+
+  .Fifth
+  {
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(#efbbff, #91b8e5);
+    border-radius: 25px;
+    grid-column-end: 5;
+    grid-column-start: 4;
+    grid-row-end: 3;
+    grid-row-start: 3;
+  }
+
+  .Sixth
+  {
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(#efbbff, #91b8e5);
+    border-radius: 25px;
+    grid-column-end: 6;
+    grid-column-start: 5;
+    grid-row-end: 3;
+    grid-row-start: 3;
+  }
+
+  .First:hover,
+.Second:hover,
+.Third:hover,
+.Fourth:hover,
+.Fifth:hover,
+.Sixth:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: 0.3s ease;
+}

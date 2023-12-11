@@ -11,8 +11,10 @@ import { useUserContext } from '../Context/UserContext';
 
 
 
+
 function UserAccount  ()
 {
+    
     useEffect(() => {
     const select = document.querySelectorAll('select');
     const input = document.querySelectorAll('input');
@@ -48,9 +50,11 @@ function UserAccount  ()
     };
 
     currency();
+    
     }, [])
 
-
+    const {user} = useUserContext();
+    console.log(user)
 
     return(
      
@@ -58,7 +62,7 @@ function UserAccount  ()
     
               <div className='UserAccountBody'>
               
-                <h4 id='Name'>Üdvözöljük, <label id='AccountUserName'>Hello,👋</label></h4>   
+                <h4 id='Name'>Üdvözöljük, 👋</h4>   
                  <div className='UserAccountNavbar'>
                 <nav> 
                     <ul>
@@ -70,6 +74,7 @@ function UserAccount  ()
                         <li><a><FontAwesomeIcon icon={faVault} className='icon'/><span className='navitem'>Zseb</span></a></li>
                         <li><a href="#Kártyáim"><FontAwesomeIcon icon={faCreditCard} className='icon'/><span className='navitem'>Kártyáim</span></a></li><br></br><br></br>
                         <li><a><FontAwesomeIcon icon={faRightFromBracket}  className='logout' id='logout'/><span className='navitem'>Kilépés</span></a></li>
+                        
                     </ul>
                 </nav> 
             
@@ -88,18 +93,18 @@ function UserAccount  ()
                                         <div className='convert-box'>
                                             <div className='from'>
                                                 <p>Erről</p>
-                                                <input type='number'/>
                                                 <select>
                                                    
                                                 </select>
+                                                <input type='number'/>
                                             </div>
-                                            <div className='reverse'><FontAwesomeIcon icon={faArrowRightArrowLeft}  /></div>
+                                            <div className='reverse'  ><FontAwesomeIcon icon={faArrowRightArrowLeft} /></div>
                                             < div className='to'>
                                                 <p>Erre</p>
-                                                <input type='number'/>
                                                 <select>
                                                     
                                                 </select>
+                                                <input type='number'/>
                                             </div>
                                             
                                             

@@ -22,10 +22,7 @@
 
 
 
-.error
-{
-    border: 2px solid rgb(120, 2, 2) !important;
-}
+
 
 .LoginPageInputHolder input
 {
@@ -84,13 +81,3 @@
     }
   }
 
-.ErrorLabel2 {
-    color: rgb(146, 1, 1);
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 15px;
-    display: flex;
-    align-items: center; /* Vertically center content */
-    justify-content: center; /* Horizontally center content */
-    text-align: center;
-  }

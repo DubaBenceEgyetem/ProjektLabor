@@ -1,7 +1,7 @@
 import React, { createContext, Dispatch, useContext, useReducer } from "react";
 
 const userReducer = (state, action) => {
-  let { user } = action.payload;
+  let {user}   = action.payload;
 
   switch (action.type) {
     case "login":
