@@ -53,13 +53,12 @@ function LoginPage() {
                     setEmailError(email.trim() === "");
                     setPasswordError(password.trim() === "");
 
-                } else if (result.status == (200 || 304)) { // fixelni kell
+                } else if (result.status == 200) { // fixelni kell
                     userDispatch(
                         {
                             type: 'login',
                             payload: 
                             {
-
                                 user : result.data.UserData,
                             }
                         }
@@ -67,25 +66,23 @@ function LoginPage() {
                     
                     console.log(result.data)
                     navigate('/UserAccount')
-                } else {
-                    toast.error('Hibás email vagy jelszó', {
-                        position: 'bottom-center',
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        newestOnTop: false,
-                        closeOnClick: true,
-                        rtl: false,
-                        pauseOnFocusLoss: true,
-                        draggable: true,
-                        pauseOnHover: true,
-                        theme: 'dark',
-                      });
-                    }
+                } 
             })
             .catch((error) => {
-                console.error(error);
-                alert(error.message);
+                toast.error('Hibás email vagy jelszó', {
+                    position: 'bottom-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    newestOnTop: false,
+                    closeOnClick: true,
+                    rtl: false,
+                    pauseOnFocusLoss: true,
+                    draggable: true,
+                    pauseOnHover: true,
+                    theme: 'dark',
+                  });
             });
+            
     }
 
     return (

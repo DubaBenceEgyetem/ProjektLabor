@@ -375,3 +375,8 @@
         padding: 2px;
 }
 
+.MoneyTransfer
+{
+    background-color: red;
+    height: 100%;
+}

@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import './RegisterPage.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -54,20 +56,40 @@ function RegisterPage()
             Email : email,
             Jelszo : password,
             PhoneNo : phone,
-            számla : check
+            szamla : check
             //ÁDÁM ELNEVEZÉSEI KELLENEK
         }
         const url = 'https://localhost:44310/api/Test/Registration';
+        const isEmptyField = Object.values(data).some(value => value.trim() === '');
         axios.post(url,data).then((result) =>{
-            if(result.data == 'Fill all required fields.')
-            {
-              //  alert(result.data);
-                document.getElementById("ErrorLabel").innerHTML = "Töltse ki a hiányzó mezőket*"               
-            }
+            if (isEmptyField) {  
+                toast.error('Töltse ki a hiányzó mezőket', {
+                    position: 'bottom-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    newestOnTop: false,
+                    closeOnClick: true,
+                    rtl: false,
+                    pauseOnFocusLoss: true,
+                    draggable: true,
+                    pauseOnHover: true,
+                    theme: 'dark',
+                  });
+                }
             else
             {
-               // alert(result.data);
-                document.getElementById("ErrorLabel").innerHTML = "Sikeres regisztráció";
+                toast.error('Sikeres regisztráció', {
+                    position: 'bottom-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    newestOnTop: false,
+                    closeOnClick: true,
+                    rtl: false,
+                    pauseOnFocusLoss: true,
+                    draggable: true,
+                    pauseOnHover: true,
+                    theme: 'dark',
+                  });
             }
         })
         .catch((error)=>
@@ -81,6 +103,17 @@ function RegisterPage()
 
     return(
         <Fragment>
+            <ToastContainer 
+             position="bottom-center"
+             autoClose={5000}
+             hideProgressBar={false}
+             newestOnTop={false}
+             closeOnClick
+             rtl={false}
+             pauseOnFocusLoss
+             draggable
+             pauseOnHover
+             theme="dark"/>
             <div className='RegisterPageWrapper' id='RegisterForm'>
                 <div className='RegisterPageInputHolder'>
                     <h1>Regisztráció</h1><br></br>

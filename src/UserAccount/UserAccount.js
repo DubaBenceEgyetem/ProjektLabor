@@ -54,7 +54,6 @@ function UserAccount  ()
     }, [])
 
     const {user} = useUserContext();
-    console.log(user)
 
     return(
      
@@ -115,7 +114,7 @@ function UserAccount  ()
                     </div>
                  </div>
 
-                
+                 <div className='MoneyTransfer'>sdsd</div>
               </div>
     )
     
